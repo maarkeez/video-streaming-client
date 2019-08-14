@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E57AA9C4230469D500F60DE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57AA9C3230469D500F60DE6 /* AppDelegate.swift */; };
-		E57AA9C6230469D500F60DE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57AA9C5230469D500F60DE6 /* ViewController.swift */; };
+		E57AA9C6230469D500F60DE6 /* VSCHomePageViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57AA9C5230469D500F60DE6 /* VSCHomePageViewControler.swift */; };
 		E57AA9C9230469D500F60DE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E57AA9C7230469D500F60DE6 /* Main.storyboard */; };
 		E57AA9CB230469D700F60DE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E57AA9CA230469D700F60DE6 /* Assets.xcassets */; };
 		E57AA9CE230469D700F60DE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E57AA9CC230469D700F60DE6 /* LaunchScreen.storyboard */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		E57AA9C0230469D500F60DE6 /* video-streaming-client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "video-streaming-client.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57AA9C3230469D500F60DE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E57AA9C5230469D500F60DE6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E57AA9C5230469D500F60DE6 /* VSCHomePageViewControler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSCHomePageViewControler.swift; sourceTree = "<group>"; };
 		E57AA9C8230469D500F60DE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E57AA9CA230469D700F60DE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E57AA9CD230469D700F60DE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				E57AA9C3230469D500F60DE6 /* AppDelegate.swift */,
-				E57AA9C5230469D500F60DE6 /* ViewController.swift */,
+				E57AA9C5230469D500F60DE6 /* VSCHomePageViewControler.swift */,
 				E57AA9C7230469D500F60DE6 /* Main.storyboard */,
 				E57AA9CA230469D700F60DE6 /* Assets.xcassets */,
 				E57AA9CC230469D700F60DE6 /* LaunchScreen.storyboard */,
@@ -135,7 +135,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E57AA9C6230469D500F60DE6 /* ViewController.swift in Sources */,
+				E57AA9C6230469D500F60DE6 /* VSCHomePageViewControler.swift in Sources */,
 				E57AA9C4230469D500F60DE6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,6 +285,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 59SH2VU4Z2;
 				INFOPLIST_FILE = "video-streaming-client/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -303,6 +304,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 59SH2VU4Z2;
 				INFOPLIST_FILE = "video-streaming-client/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
