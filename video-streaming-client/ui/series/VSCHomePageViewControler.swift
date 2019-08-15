@@ -96,9 +96,21 @@ extension VSCHomePageViewControler: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! VCSCollectionViewCell
         cell.backgroundColor = myCollectionView.backgroundColor
        
+        // TITLE
         cell.myTitle.text = series[indexPath.row].name
+        cell.myTitle.translatesAutoresizingMaskIntoConstraints = false
+        
+        cell.myTitle.leftAnchor.constraint(equalTo: cell.leftAnchor).isActive = true
+        cell.myTitle.rightAnchor.constraint(equalTo: cell.rightAnchor).isActive = true
+        cell.myTitle.topAnchor.constraint(equalTo: cell.myView.layoutMarginsGuide.bottomAnchor, constant: 40.0).isActive = true
+        cell.myTitle.heightAnchor.constraint(equalTo: cell.myTitle.heightAnchor).isActive = true
+
+        
+        
+        // IMAGE
         let displayImage = series[indexPath.row].displayImage
         
+        // We need an extra view to add Shadow + Corner radious with an image
         let outerView = cell.myView!
         outerView.clipsToBounds = false
         outerView.layer.frame.size.height = cell.layer.frame.size.height * 0.60
@@ -116,50 +128,8 @@ extension VSCHomePageViewControler: UICollectionViewDataSource {
         myImage.layer.frame.size.width = cell.layer.frame.size.width
         myImage.contentMode = .scaleAspectFit
         myImage.image = displayImage
-    
         outerView.addSubview(myImage)
         
-        
-        
-        /*
-        var rect = cell.myImage.frame
-        rect.size.height = rect.size.height * 0.60
-       
-        cell.myImage.frame = rect
-        
-        cell.myImage.layer.masksToBounds = true
-        cell.myImage.layer.cornerRadius = 3.0
-        cell.myImage.layer.borderWidth = 1.0
-        cell.myImage.layer.borderColor = UIColor.clear.cgColor
-       
-        cell.myImage.layer.shadowColor = UIColor.black.cgColor
-        cell.myImage.layer.shadowOffset = CGSize(width: 0, height: 1.0)
-        cell.myImage.layer.shadowOpacity = 0.2
-        cell.myImage.layer.shadowRadius = 4.0
-        
-        var shadowLayer = CAShapeLayer()
-        shadowLayer.shadowColor = UIColor.black.cgColor
-        shadowLayer.shadowOffset = CGSize(width: 0, height: 4.0)
-        shadowLayer.shadowRadius = 2.0
-        shadowLayer.shadowOpacity = 0.3
-        shadowLayer.path = UIBezierPath(roundedRect: cell.myImage.bounds, cornerRadius: cell.myImage.layer.cornerRadius).cgPath
-         cell.myImage.layer.insertSublayer(shadowLayer, at: 0)
- 
-    
-        let containerView = UIView()
-        cell.myImage.addSubview(containerView)
-        
-        containerView.layer.cornerRadius = 25.0
-        containerView.layer.masksToBounds = true
-        containerView.leadingAnchor.constraint(equalTo:  cell.myImage.leadingAnchor).isActive = true
-        containerView.trailingAnchor.constraint(equalTo: cell.myImage.trailingAnchor).isActive = true
-        containerView.topAnchor.constraint(equalTo: cell.myImage.topAnchor).isActive = true
-        containerView.bottomAnchor.constraint(equalTo: cell.myImage.bottomAnchor).isActive = true
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        
-       
-        
-        */
         
         return cell
     }
