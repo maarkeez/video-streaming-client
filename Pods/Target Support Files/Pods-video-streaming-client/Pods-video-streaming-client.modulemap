@@ -1,0 +1,6 @@
+framework module Pods_video_streaming_client {
+  umbrella header "Pods-video-streaming-client-umbrella.h"
+
+  export *
+  module * { export * }
+}

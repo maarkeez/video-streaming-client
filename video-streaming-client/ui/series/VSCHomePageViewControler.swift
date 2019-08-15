@@ -19,18 +19,24 @@ class VSCHomePageViewControler : UIViewController {
     private let reuseIdentifier = "myCollectionViewCell"
     private let sectionInsets = UIEdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0)
     private let itemsPerRow: CGFloat = 2
+    private var series : [Serie] = []
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         myCollectionView.dataSource = self
         myCollectionView.delegate = self
+        series.append(contentsOf: SerieSerivce.singleton().findAll())
     }
 
   
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4
-        let url = URL(string: "https://video-streaming-server.herokuapp.com/videos/minions_bomberos.mp4")!
+        // let url = URL(string: "https://video-streaming-server.herokuapp.com/videos/minions_bomberos.mp4")!
         
         // playVideo(url: url)
     }
@@ -55,14 +61,14 @@ extension VSCHomePageViewControler: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
+        return series.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! VCSCollectionViewCell
         cell.backgroundColor = .black
-        cell.myImage.image = #imageLiteral(resourceName: "true_blood")
+        cell.myImage.image = series[indexPath.count].displayImage
         
         cell.contentView.layer.cornerRadius = 3.0
         cell.contentView.layer.borderWidth = 1.0
