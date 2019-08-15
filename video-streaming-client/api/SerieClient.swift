@@ -11,12 +11,17 @@ import Alamofire
 import PromiseKit
 
 class SerieClient {
+    
+    private init(){}
+    
+    public static func singleton() -> SerieClient {
+        return SerieClient()
+    }
 
     func findAll() -> Promise<[Serie]> {
         
         return Promise { seal in
-            Alamofire.request("http://10.10.1.117:8080/vss/api/serie", method: .get).responseJSON { response in
-                
+            Alamofire.request(getBaseUrl() + "/vss/api/serie", method: .get).responseJSON { response in
                 switch response.result {
                 case .success(let json):
                     guard let json = json  as? [[String: Any]] else {
@@ -44,15 +49,24 @@ class SerieClient {
     private func toSerie(from item: [String: Any]) -> Serie {
         let hasDisplayImageUrl = item["hasDisplayImageUrl"] as! Bool
         let displayImageUrl = item["displayImageUrl"] as! String
-        var image : UIImage = #imageLiteral(resourceName: "no_image_available")
+        let name = item["name"] as! String
+        var image = #imageLiteral(resourceName: "no_image_available")
         
         if(hasDisplayImageUrl){
-            if let displayImageData = try? Data(contentsOf: URL(string: displayImageUrl)!) {
+            let displayImageCompleteUrl = getBaseUrl() + "/" + displayImageUrl
+            print("Searching for image: " + displayImageCompleteUrl)
+            
+            if let displayImageData = try? Data(contentsOf: URL(string: displayImageCompleteUrl)!) {
+                print("Imagen found!")
                 image = UIImage(data: displayImageData)!
             }
         }
         
-        return Serie(displayImage: image)
+        return Serie(displayImage: image, name: name)
+    }
+    
+    private func getBaseUrl() -> String {
+        return "http://10.10.1.117:8080"
     }
     
 }

@@ -12,9 +12,11 @@ import UIKit
 class Serie {
     
     let displayImage : UIImage
+    let name : String
     
-    init(displayImage : UIImage){
+    init(displayImage : UIImage, name: String){
         self.displayImage = displayImage
+        self.name = name
     }
     
 }

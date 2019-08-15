@@ -29,7 +29,20 @@ class VSCHomePageViewControler : UIViewController {
         super.viewDidLoad()
         myCollectionView.dataSource = self
         myCollectionView.delegate = self
-        series.append(contentsOf: SerieSerivce.singleton().findAll())
+       
+        SerieSerivce.singleton().findAll().done { series in
+
+            self.series.append(contentsOf: series)
+            self.reloadDataInMainThread()
+           
+        }.catch { e in
+            
+            print("Error while retrieving series. Cause: " + e.localizedDescription)
+            self.series.append(contentsOf: self.seriesPlaceholder())
+            self.reloadDataInMainThread()
+            
+        }
+        
     }
 
   
@@ -41,8 +54,22 @@ class VSCHomePageViewControler : UIViewController {
         // playVideo(url: url)
     }
     
+    private func seriesPlaceholder() -> [Serie] {
+        var series : [Serie] = []
+        for _ in 1...50{
+            series.append(Serie(displayImage: #imageLiteral(resourceName: "no_image_available"), name: ""))
+        }
+        return series
+    }
     
-    func playVideo(url: URL) {
+    private func reloadDataInMainThread(){
+        DispatchQueue.main.async {
+            self.myCollectionView.reloadData()
+        }
+    }
+    
+    
+    private func playVideo(url: URL) {
         
         let player = AVPlayer(url: url)
         
@@ -65,16 +92,16 @@ extension VSCHomePageViewControler: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+       
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! VCSCollectionViewCell
         cell.backgroundColor = .black
-        cell.myImage.image = series[indexPath.count].displayImage
-        
+        cell.myImage.image = series[indexPath.row].displayImage
+        cell.myTitle.text = series[indexPath.row].name
+       
         cell.contentView.layer.cornerRadius = 3.0
         cell.contentView.layer.borderWidth = 1.0
         cell.contentView.layer.borderColor = UIColor.clear.cgColor
         cell.contentView.layer.masksToBounds = true
-        
         
         cell.layer.shadowColor = UIColor.black.cgColor
         cell.layer.shadowOffset = CGSize(width: 0, height: 4.0)

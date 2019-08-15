@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import PromiseKit
 
 class SerieSerivce {
     
@@ -18,15 +19,8 @@ class SerieSerivce {
         return SerieSerivce()
     }
     
-    func findAll() -> [Serie] {
-        var series : [Serie] = []
-        for _ in 0...49 {
-            series.append(Serie(displayImage: #imageLiteral(resourceName: "true_blood")))
-        }
-        
-        return series
-        
+    func findAll() -> Promise<[Serie]> {
+        return SerieClient.singleton().findAll()
     }
-    
     
 }
