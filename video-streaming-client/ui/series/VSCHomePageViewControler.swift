@@ -17,7 +17,7 @@ class VSCHomePageViewControler : UIViewController {
     
     // MARK: - Properties
     private let reuseIdentifier = "myCollectionViewCell"
-    private let sectionInsets = UIEdgeInsets(top: 20.0, left: 20.0, bottom: 20.0, right: 20.0)
+    private let sectionInsets = UIEdgeInsets(top: 20.0, left: 10.0, bottom: 20.0, right: 10.0)
     private let itemsPerRow: CGFloat = 2
     private var series : [Serie] = []
     
@@ -102,7 +102,7 @@ extension VSCHomePageViewControler: UICollectionViewDataSource {
         
         cell.myTitle.leftAnchor.constraint(equalTo: cell.leftAnchor).isActive = true
         cell.myTitle.rightAnchor.constraint(equalTo: cell.rightAnchor).isActive = true
-        cell.myTitle.topAnchor.constraint(equalTo: cell.myView.layoutMarginsGuide.bottomAnchor, constant: 40.0).isActive = true
+        cell.myTitle.topAnchor.constraint(equalTo: cell.myView.layoutMarginsGuide.bottomAnchor, constant: 55.0).isActive = true
         cell.myTitle.heightAnchor.constraint(equalTo: cell.myTitle.heightAnchor).isActive = true
 
         
@@ -111,14 +111,15 @@ extension VSCHomePageViewControler: UICollectionViewDataSource {
         let displayImage = series[indexPath.row].displayImage
         
         // We need an extra view to add Shadow + Corner radious with an image
+        let cornerRadious : CGFloat = 3.0
         let outerView = cell.myView!
         outerView.clipsToBounds = false
         outerView.layer.frame.size.height = cell.layer.frame.size.height * 0.60
         outerView.layer.shadowColor = UIColor.black.cgColor
-        outerView.layer.shadowOpacity = 0.3
-        outerView.layer.shadowOffset = CGSize(width: 0, height: 3.0)
-        outerView.layer.shadowRadius = 5
-        outerView.layer.shadowPath = UIBezierPath(roundedRect: outerView.bounds, cornerRadius: 5).cgPath
+        outerView.layer.shadowOpacity = 0.2
+        outerView.layer.shadowOffset = CGSize(width: 0, height: 10.0)
+        outerView.layer.shadowRadius = cornerRadious
+        outerView.layer.shadowPath = UIBezierPath(roundedRect: outerView.bounds, cornerRadius: cornerRadious).cgPath
         
         let myImage = UIImageView(frame: outerView.bounds)
         myImage.layer.cornerRadius = 10
@@ -126,7 +127,7 @@ extension VSCHomePageViewControler: UICollectionViewDataSource {
         myImage.layer.borderColor = UIColor.clear.cgColor
         myImage.layer.masksToBounds = true
         myImage.layer.frame.size.width = cell.layer.frame.size.width
-        myImage.contentMode = .scaleAspectFit
+        myImage.contentMode = .scaleAspectFill
         myImage.image = displayImage
         outerView.addSubview(myImage)
         
@@ -161,7 +162,7 @@ extension VSCHomePageViewControler: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return sectionInsets.left
+        return 1.0
     }
 }
 
