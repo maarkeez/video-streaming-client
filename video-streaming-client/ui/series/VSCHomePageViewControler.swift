@@ -94,21 +94,72 @@ extension VSCHomePageViewControler: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! VCSCollectionViewCell
-        cell.backgroundColor = .black
-        cell.myImage.image = series[indexPath.row].displayImage
-        cell.myTitle.text = series[indexPath.row].name
+        cell.backgroundColor = myCollectionView.backgroundColor
        
-        cell.contentView.layer.cornerRadius = 3.0
-        cell.contentView.layer.borderWidth = 1.0
-        cell.contentView.layer.borderColor = UIColor.clear.cgColor
-        cell.contentView.layer.masksToBounds = true
+        cell.myTitle.text = series[indexPath.row].name
+        let displayImage = series[indexPath.row].displayImage
         
-        cell.layer.shadowColor = UIColor.black.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0, height: 4.0)
-        cell.layer.shadowRadius = 2.0
-        cell.layer.shadowOpacity = 0.3
-        cell.layer.masksToBounds = false
-        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
+        let outerView = cell.myView!
+        outerView.clipsToBounds = false
+        outerView.layer.frame.size.height = cell.layer.frame.size.height * 0.60
+        outerView.layer.shadowColor = UIColor.black.cgColor
+        outerView.layer.shadowOpacity = 0.3
+        outerView.layer.shadowOffset = CGSize(width: 0, height: 3.0)
+        outerView.layer.shadowRadius = 5
+        outerView.layer.shadowPath = UIBezierPath(roundedRect: outerView.bounds, cornerRadius: 5).cgPath
+        
+        let myImage = UIImageView(frame: outerView.bounds)
+        myImage.layer.cornerRadius = 10
+        myImage.layer.borderWidth = 1.0
+        myImage.layer.borderColor = UIColor.clear.cgColor
+        myImage.layer.masksToBounds = true
+        myImage.layer.frame.size.width = cell.layer.frame.size.width
+        myImage.contentMode = .scaleAspectFit
+        myImage.image = displayImage
+    
+        outerView.addSubview(myImage)
+        
+        
+        
+        /*
+        var rect = cell.myImage.frame
+        rect.size.height = rect.size.height * 0.60
+       
+        cell.myImage.frame = rect
+        
+        cell.myImage.layer.masksToBounds = true
+        cell.myImage.layer.cornerRadius = 3.0
+        cell.myImage.layer.borderWidth = 1.0
+        cell.myImage.layer.borderColor = UIColor.clear.cgColor
+       
+        cell.myImage.layer.shadowColor = UIColor.black.cgColor
+        cell.myImage.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        cell.myImage.layer.shadowOpacity = 0.2
+        cell.myImage.layer.shadowRadius = 4.0
+        
+        var shadowLayer = CAShapeLayer()
+        shadowLayer.shadowColor = UIColor.black.cgColor
+        shadowLayer.shadowOffset = CGSize(width: 0, height: 4.0)
+        shadowLayer.shadowRadius = 2.0
+        shadowLayer.shadowOpacity = 0.3
+        shadowLayer.path = UIBezierPath(roundedRect: cell.myImage.bounds, cornerRadius: cell.myImage.layer.cornerRadius).cgPath
+         cell.myImage.layer.insertSublayer(shadowLayer, at: 0)
+ 
+    
+        let containerView = UIView()
+        cell.myImage.addSubview(containerView)
+        
+        containerView.layer.cornerRadius = 25.0
+        containerView.layer.masksToBounds = true
+        containerView.leadingAnchor.constraint(equalTo:  cell.myImage.leadingAnchor).isActive = true
+        containerView.trailingAnchor.constraint(equalTo: cell.myImage.trailingAnchor).isActive = true
+        containerView.topAnchor.constraint(equalTo: cell.myImage.topAnchor).isActive = true
+        containerView.bottomAnchor.constraint(equalTo: cell.myImage.bottomAnchor).isActive = true
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        
+       
+        
+        */
         
         return cell
     }
@@ -124,7 +175,7 @@ extension VSCHomePageViewControler: UICollectionViewDelegateFlowLayout {
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
-        let heightPerItem = widthPerItem * 0.60
+        let heightPerItem = widthPerItem
 
         return CGSize(width: widthPerItem, height:heightPerItem )
     }
@@ -140,7 +191,7 @@ extension VSCHomePageViewControler: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return sectionInsets.left * 2.5
+        return sectionInsets.left
     }
 }
 

@@ -57,7 +57,7 @@ class SerieClient {
             print("Searching for image: " + displayImageCompleteUrl)
             
             if let displayImageData = try? Data(contentsOf: URL(string: displayImageCompleteUrl)!) {
-                print("Imagen found!")
+                print("Image found!")
                 image = UIImage(data: displayImageData)!
             }
         }

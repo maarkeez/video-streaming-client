@@ -35,34 +35,31 @@
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ota-nx-BQa">
-                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serie title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPL-Ih-hgj">
-                                                    <rect key="frame" x="4" y="175" width="192" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="UQ9-Xc-s6x"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Serie title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPL-Ih-hgj">
+                                                    <rect key="frame" x="4" y="171" width="192" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hgc-4v-k84">
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="76"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="76" id="w2A-Zu-Joi"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="ota-nx-BQa" firstAttribute="leading" secondItem="Eya-bt-8J2" secondAttribute="leading" id="AKb-IN-cZY"/>
-                                            <constraint firstItem="DPL-Ih-hgj" firstAttribute="leading" secondItem="Eya-bt-8J2" secondAttribute="leading" constant="4" id="HZ4-mG-8fC"/>
-                                            <constraint firstItem="ota-nx-BQa" firstAttribute="top" secondItem="Eya-bt-8J2" secondAttribute="top" id="K2v-a1-gem"/>
-                                            <constraint firstAttribute="bottom" secondItem="DPL-Ih-hgj" secondAttribute="bottom" constant="4" id="VOI-xD-Hom"/>
-                                            <constraint firstAttribute="trailing" secondItem="DPL-Ih-hgj" secondAttribute="trailing" constant="4" id="cOV-mm-qDD"/>
-                                            <constraint firstAttribute="trailing" secondItem="ota-nx-BQa" secondAttribute="trailing" id="m6d-TJ-hAz"/>
-                                            <constraint firstAttribute="bottom" secondItem="ota-nx-BQa" secondAttribute="bottom" id="vkB-yu-vhU"/>
+                                            <constraint firstItem="Hgc-4v-k84" firstAttribute="leading" secondItem="Eya-bt-8J2" secondAttribute="leading" id="F1O-22-DEo"/>
+                                            <constraint firstAttribute="trailing" secondItem="Hgc-4v-k84" secondAttribute="trailing" id="Zz3-kb-oQw"/>
+                                            <constraint firstItem="Hgc-4v-k84" firstAttribute="top" secondItem="Eya-bt-8J2" secondAttribute="top" id="uzD-ru-Qgk"/>
                                         </constraints>
                                         <size key="customSize" width="200" height="200"/>
                                         <connections>
-                                            <outlet property="myImage" destination="ota-nx-BQa" id="mTU-fl-Mh3"/>
                                             <outlet property="myTitle" destination="DPL-Ih-hgj" id="EcI-fr-PYS"/>
+                                            <outlet property="myView" destination="Hgc-4v-k84" id="eZJ-98-fvk"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
