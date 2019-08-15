@@ -12,6 +12,7 @@
 		E57AA9C9230469D500F60DE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E57AA9C7230469D500F60DE6 /* Main.storyboard */; };
 		E57AA9CB230469D700F60DE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E57AA9CA230469D700F60DE6 /* Assets.xcassets */; };
 		E57AA9CE230469D700F60DE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E57AA9CC230469D700F60DE6 /* LaunchScreen.storyboard */; };
+		E5F279F9230567570029245C /* VCSCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F279F8230567570029245C /* VCSCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		E57AA9CA230469D700F60DE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E57AA9CD230469D700F60DE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E57AA9CF230469D700F60DE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E5F279F8230567570029245C /* VCSCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCSCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				E57AA9C3230469D500F60DE6 /* AppDelegate.swift */,
 				E57AA9C5230469D500F60DE6 /* VSCHomePageViewControler.swift */,
 				E57AA9C7230469D500F60DE6 /* Main.storyboard */,
+				E5F279F8230567570029245C /* VCSCollectionViewCell.swift */,
 				E57AA9CA230469D700F60DE6 /* Assets.xcassets */,
 				E57AA9CC230469D700F60DE6 /* LaunchScreen.storyboard */,
 				E57AA9CF230469D700F60DE6 /* Info.plist */,
@@ -137,6 +140,7 @@
 			files = (
 				E57AA9C6230469D500F60DE6 /* VSCHomePageViewControler.swift in Sources */,
 				E57AA9C4230469D500F60DE6 /* AppDelegate.swift in Sources */,
+				E5F279F9230567570029245C /* VCSCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
