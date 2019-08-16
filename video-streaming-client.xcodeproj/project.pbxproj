@@ -18,6 +18,10 @@
 		E5F27A0023056E140029245C /* SerieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F279FF23056E140029245C /* SerieService.swift */; };
 		E5F27A032305873C0029245C /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = E5F27A022305873C0029245C /* Podfile */; };
 		E5F27A06230589930029245C /* SerieClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F27A05230589930029245C /* SerieClient.swift */; };
+		E5F68D66230755F1007A4113 /* VCSSerieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F68D65230755F1007A4113 /* VCSSerieDetailViewController.swift */; };
+		E5F68D6823075A81007A4113 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F68D6723075A81007A4113 /* Episode.swift */; };
+		E5F68D6A23075AC7007A4113 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F68D6923075AC7007A4113 /* Season.swift */; };
+		E5F68D6C23075D05007A4113 /* VCSSerieDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F68D6B23075D05007A4113 /* VCSSerieDetailTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		E5F279FF23056E140029245C /* SerieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieService.swift; sourceTree = "<group>"; };
 		E5F27A022305873C0029245C /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E5F27A05230589930029245C /* SerieClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerieClient.swift; sourceTree = "<group>"; };
+		E5F68D65230755F1007A4113 /* VCSSerieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCSSerieDetailViewController.swift; sourceTree = "<group>"; };
+		E5F68D6723075A81007A4113 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		E5F68D6923075AC7007A4113 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
+		E5F68D6B23075D05007A4113 /* VCSSerieDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCSSerieDetailTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +123,8 @@
 			children = (
 				E57AA9C5230469D500F60DE6 /* VSCHomePageViewControler.swift */,
 				E5F279F8230567570029245C /* VCSCollectionViewCell.swift */,
+				E5F68D65230755F1007A4113 /* VCSSerieDetailViewController.swift */,
+				E5F68D6B23075D05007A4113 /* VCSSerieDetailTableViewCell.swift */,
 			);
 			path = series;
 			sourceTree = "<group>";
@@ -123,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				E5F279FC23056DB50029245C /* Serie.swift */,
+				E5F68D6723075A81007A4113 /* Episode.swift */,
+				E5F68D6923075AC7007A4113 /* Season.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -266,10 +278,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5F68D6C23075D05007A4113 /* VCSSerieDetailTableViewCell.swift in Sources */,
 				E57AA9C6230469D500F60DE6 /* VSCHomePageViewControler.swift in Sources */,
+				E5F68D6A23075AC7007A4113 /* Season.swift in Sources */,
+				E5F68D6823075A81007A4113 /* Episode.swift in Sources */,
 				E5F27A06230589930029245C /* SerieClient.swift in Sources */,
 				E57AA9C4230469D500F60DE6 /* AppDelegate.swift in Sources */,
 				E5F279FD23056DB50029245C /* Serie.swift in Sources */,
+				E5F68D66230755F1007A4113 /* VCSSerieDetailViewController.swift in Sources */,
 				E5F27A0023056E140029245C /* SerieService.swift in Sources */,
 				E5F279F9230567570029245C /* VCSCollectionViewCell.swift in Sources */,
 			);

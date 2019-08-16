@@ -7,19 +7,19 @@
 //
 
 import UIKit
-import AVKit
-import AVFoundation
 
 class VSCHomePageViewControler : UIViewController {
 
     // MARK: - UI
     @IBOutlet weak var myCollectionView: UICollectionView!
     
-    // MARK: - Properties
+    // MARK: - Properties   
+    private let segueToSerieDetail = "segueToSerieDetail"
     private let reuseIdentifier = "myCollectionViewCell"
     private let sectionInsets = UIEdgeInsets(top: 20.0, left: 10.0, bottom: 20.0, right: 10.0)
     private let itemsPerRow: CGFloat = 2
     private var series : [Serie] = []
+    private var selectedSerie : Serie?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -27,6 +27,7 @@ class VSCHomePageViewControler : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+                
         myCollectionView.dataSource = self
         myCollectionView.delegate = self
        
@@ -45,13 +46,8 @@ class VSCHomePageViewControler : UIViewController {
         
     }
 
-  
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        // https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4
-        // let url = URL(string: "https://video-streaming-server.herokuapp.com/videos/minions_bomberos.mp4")!
-        
-        // playVideo(url: url)
     }
     
     private func seriesPlaceholder() -> [Serie] {
@@ -68,17 +64,6 @@ class VSCHomePageViewControler : UIViewController {
         }
     }
     
-    
-    private func playVideo(url: URL) {
-        
-        let player = AVPlayer(url: url)
-        
-        let vc = AVPlayerViewController()
-        vc.player = player
-        
-        self.present(vc, animated: true) { vc.player?.play() }
-    }
-
 }
 
 extension VSCHomePageViewControler: UICollectionViewDataSource {
@@ -168,5 +153,18 @@ extension VSCHomePageViewControler: UICollectionViewDelegateFlowLayout {
 
 
 extension VSCHomePageViewControler: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedSerie = series[indexPath.row]
+        self.performSegue(withIdentifier: segueToSerieDetail, sender: self)
+        /*
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "VCSSerieDetailViewController") as! VCSSerieDetailViewController
+        vc.mySerie = series[indexPath.row]
+        present(vc, animated: true, completion: nil)*/
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == segueToSerieDetail {
+            let vcSerieDetail = segue.destination as! VCSSerieDetailViewController
+            vcSerieDetail.mySerie = selectedSerie
+        }
+    }
 }
