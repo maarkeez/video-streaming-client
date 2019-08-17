@@ -13,10 +13,12 @@ class Serie {
     
     let displayImage : UIImage
     let name : String
+    let seasons : [Season]
     
-    init(displayImage : UIImage, name: String){
+    init(displayImage : UIImage, name: String, seasons : [Season]){
         self.displayImage = displayImage
         self.name = name
+        self.seasons = seasons
     }
     
 }

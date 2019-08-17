@@ -18,7 +18,6 @@ class VCSSerieDetailViewController: UIViewController {
     
     // MARK: - Properties
     var mySerie: Serie?
-    var seasons : [Season] = []
     
     private let reuseIdentifier = "serieDetailCell"
     
@@ -29,18 +28,6 @@ class VCSSerieDetailViewController: UIViewController {
         myTable.dataSource = self
         myTable.delegate = self
         myDisplayImage.image = mySerie?.displayImage
-        populateSeasons()
-    }
-    
-    private func populateSeasons() {
-        let videoLink = "http://10.10.1.117:8080/videos/minions_bomberos.mp4"
-        for _ in 1...3 {
-            var episodes : [Episode] = []
-            episodes.append(Episode(title: "Episode 1", videoLink: videoLink))
-            episodes.append(Episode(title: "Episode 2", videoLink: videoLink))
-            episodes.append(Episode(title: "Episode 3", videoLink: videoLink))
-            seasons.append(Season(episodes: episodes))
-        }
     }
     
     private func playVideo(url: URL) {
@@ -56,16 +43,17 @@ class VCSSerieDetailViewController: UIViewController {
 extension VCSSerieDetailViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return seasons.count
+        return mySerie?.seasons.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return seasons[section].episodes.count
+        return mySerie?.seasons[section].episodes.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myTable.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! VCSSerieDetailTableViewCell
-        cell.myEpisodeTitle.text = seasons[indexPath.section].episodes[indexPath.row].title
+        cell.myEpisodeTitle.text = mySerie?.seasons[indexPath.section].episodes[indexPath.row].title
+        cell.changeSelectedBackgroundColor()
         return cell
     }
     
@@ -77,6 +65,9 @@ extension VCSSerieDetailViewController: UITableViewDataSource {
 
 extension VCSSerieDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        playVideo(url: URL(string: seasons[indexPath.section].episodes[indexPath.row].videoLink)!)
+        if let relativeVideoUrl = mySerie?.seasons[indexPath.section].episodes[indexPath.row].videoLink {
+            let urlStr = SerieClient.singleton().toUrl(relativeVideoUrl)
+            playVideo(url: URL(string: urlStr)!)
+        }
     }
 }

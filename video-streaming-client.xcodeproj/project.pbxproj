@@ -22,6 +22,7 @@
 		E5F68D6823075A81007A4113 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F68D6723075A81007A4113 /* Episode.swift */; };
 		E5F68D6A23075AC7007A4113 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F68D6923075AC7007A4113 /* Season.swift */; };
 		E5F68D6C23075D05007A4113 /* VCSSerieDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F68D6B23075D05007A4113 /* VCSSerieDetailTableViewCell.swift */; };
+		E5F68D6F230802AB007A4113 /* UITableViewCellExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F68D6E230802AB007A4113 /* UITableViewCellExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		E5F68D6723075A81007A4113 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		E5F68D6923075AC7007A4113 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 		E5F68D6B23075D05007A4113 /* VCSSerieDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCSSerieDetailTableViewCell.swift; sourceTree = "<group>"; };
+		E5F68D6E230802AB007A4113 /* UITableViewCellExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		E5F279FA23056D6B0029245C /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				E5F68D6D23080294007A4113 /* utils */,
 				E5F279FB23056D880029245C /* series */,
 			);
 			path = ui;
@@ -153,6 +156,14 @@
 				E5F27A05230589930029245C /* SerieClient.swift */,
 			);
 			path = api;
+			sourceTree = "<group>";
+		};
+		E5F68D6D23080294007A4113 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				E5F68D6E230802AB007A4113 /* UITableViewCellExtensions.swift */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +291,7 @@
 			files = (
 				E5F68D6C23075D05007A4113 /* VCSSerieDetailTableViewCell.swift in Sources */,
 				E57AA9C6230469D500F60DE6 /* VSCHomePageViewControler.swift in Sources */,
+				E5F68D6F230802AB007A4113 /* UITableViewCellExtensions.swift in Sources */,
 				E5F68D6A23075AC7007A4113 /* Season.swift in Sources */,
 				E5F68D6823075A81007A4113 /* Episode.swift in Sources */,
 				E5F27A06230589930029245C /* SerieClient.swift in Sources */,

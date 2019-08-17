@@ -39,8 +39,7 @@ class VSCHomePageViewControler : UIViewController {
         }.catch { e in
             
             print("Error while retrieving series. Cause: " + e.localizedDescription)
-            self.series.append(contentsOf: self.seriesPlaceholder())
-            self.reloadDataInMainThread()
+            self.showCenteredLabel("Could not load series")
             
         }
         
@@ -50,18 +49,19 @@ class VSCHomePageViewControler : UIViewController {
         super.viewDidAppear(animated)
     }
     
-    private func seriesPlaceholder() -> [Serie] {
-        var series : [Serie] = []
-        for _ in 1...50{
-            series.append(Serie(displayImage: #imageLiteral(resourceName: "no_image_available"), name: ""))
-        }
-        return series
-    }
-    
     private func reloadDataInMainThread(){
         DispatchQueue.main.async {
             self.myCollectionView.reloadData()
         }
+    }
+    
+    private func showCenteredLabel(_ message: String) {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width / 2, height: self.view.frame.height / 2))
+        label.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
+        label.textAlignment = .center
+        label.text = message
+        label.textColor = .lightGray
+        self.view.addSubview(label)
     }
     
 }

@@ -62,11 +62,50 @@ class SerieClient {
             }
         }
         
-        return Serie(displayImage: image, name: name)
+        let seasonsJson = item["seasons"] as! [[String: Any]]
+        let seasons = toSeasons(seasonsJson)
+        
+        return Serie(displayImage: image, name: name, seasons: seasons)
     }
     
     private func getBaseUrl() -> String {
         return "http://10.10.1.117:8080"
     }
+    
+    func toUrl(_ relativeUrl: String) -> String {
+        return getBaseUrl() + "/" + relativeUrl
+    }
+    
+    private func toSeasons(_ seasonsJson: [[String: Any]]) -> [Season] {
+        var seasons : [Season] = []
+        for seasonJson in seasonsJson {
+            seasons.append(toSeason(seasonJson))
+        }
+        return seasons
+    }
+    
+    private func toSeason(_ seasonJson: [String: Any]) -> Season {
+        let episodesJson = seasonJson["episodes"] as! [[String: Any]]
+        let episodes = toEpisodes(episodesJson)
+        return Season(episodes: episodes)
+    }
+    
+    private func toEpisodes(_ episodesJson: [[String: Any]]) -> [Episode] {
+        var episodes : [Episode] = []
+        for episodeJson in episodesJson {
+            episodes.append(toEpisode(episodeJson))
+        }
+        return episodes
+    }
+    
+    private func toEpisode(_ episodeJson: [String: Any]) -> Episode {
+        let title = episodeJson["title"] as! String
+        let videoLink = episodeJson["videoLink"] as! String
+        return Episode(title: title, videoLink: videoLink)
+    }
+    
+    
+    
+    
     
 }
